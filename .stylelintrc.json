@@ -1,7 +1,35 @@
 {
-  "extends": "stylelint-config-standard-scss",
+  "extends": ["stylelint-config-standard", "stylelint-config-recommended-scss"],
+  "plugins": ["stylelint-scss", "stylelint-order"],
   "rules": {
-    "indentation": 2,
-    "string-quotes": "single"
+    "color-no-invalid-hex": true,
+    "value-keyword-case": ["lower", { "camelCaseSvgKeywords": true }],
+    "property-no-unknown": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-shorthand-property-overrides": true,
+    "media-feature-name-no-unknown": true,
+    "comment-no-empty": true,
+    "no-descending-specificity": true,
+    "no-duplicate-selectors": true,
+    "no-invalid-position-at-import-rule": true,
+    "alpha-value-notation": "number",
+    "color-function-notation": "modern",
+    "color-hex-length": "short",
+    "length-zero-no-unit": true,
+    "font-family-name-quotes": "always-where-required",
+    "function-url-quotes": "never",
+    "import-notation": "string",
+    "shorthand-property-no-redundant-values": true,
+    "declaration-no-important": true,
+    "declaration-block-single-line-max-declarations": 1,
+    "no-unknown-animations": true,
+    "selector-type-case": "lower",
+    "rule-empty-line-before": ["always", { "except": ["first-nested"] }],
+    "at-rule-empty-line-before": [
+      "always",
+      { "except": ["blockless-after-blockless", "first-nested"] }
+    ],
+    "selector-class-pattern": null,
+    "order/properties-alphabetical-order": true
   }
 }
