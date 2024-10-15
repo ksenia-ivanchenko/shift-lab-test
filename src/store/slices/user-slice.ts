@@ -11,5 +11,5 @@ export const userSlice = createSlice({
   selectors: {},
 });
 
-export const {} = userSlice.actions;
+// export const {} = userSlice.actions;
 export const userSelector = userSlice.selectors;
