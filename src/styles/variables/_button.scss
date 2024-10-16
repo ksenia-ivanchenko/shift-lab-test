@@ -1,0 +1,47 @@
+$contained-button-font-weigth: 600;
+$text-button-font-weigth: 600;
+$link-button-font-weigth: 500;
+$link-button-font-weigth: 500;
+$tertiary-link-button-font-weigth: 400;
+
+$button-border-radius: 16px;
+$button-inline-padding: 32px;
+$button-block-padding: 16px;
+
+$primary-button-contained-bg: rgba(25, 117, 255, 1);
+$primary-button-contained-hover-bg: rgba(0, 82, 204, 1);
+$primary-button-contained-focus-bg: rgba(25, 117, 255, 1);
+$primary-button-contained-disabled-bg: rgba(204, 224, 255, 1);
+$primary-button-contained-focus-border: 2px solid rgba(204, 224, 255, 1);
+$primary-button-contained-text-color: rgba(255, 255, 255, 1);
+
+$primary-button-text-bg: rgb(255, 255, 255);
+$primary-button-text-hover-bg: rgba(240, 246, 255, 1);
+$primary-button-text-focus-bg: rgba(255, 255, 255, 1);
+$primary-button-text-disabled-border: 2px solid rgba(204, 224, 255, 1);
+$primary-button-text-focus-border: 2px solid rgba(204, 224, 255, 1);
+$primary-button-text-text-color: rgba(25, 117, 255, 1);
+$primary-button-text-disabled-text-color: rgba(204, 224, 255, 1);
+
+$primary-button-link-bg: rgb(255, 255, 255);
+$primary-button-link-color: rgba(26, 117, 255, 1);
+$primary-button-link-hover-color: rgba(0, 82, 204, 1);
+$primary-button-link-focus-color: rgba(25, 117, 255, 1);
+$primary-button-link-disabled-color: rgba(204, 224, 255, 1);
+
+$secondary-button-contained-bg: rgba(255, 255, 255, 1);
+$secondary-button-contained-hover-bg: rgba(249, 250, 251, 1);
+$secondary-button-contained-border: 1px solid rgba(206, 210, 218, 1);
+$secondary-button-contained-disabled-border: 1px solid rgba(227, 229, 229, 1);
+$secondary-button-contained-focus-border: 2px solid rgba(206, 210, 218, 1);
+
+$secondary-button-text-bg: rgba(255, 255, 255, 1);
+$secondary-button-text-hover-bg: rgb(251, 249, 250);
+$secondary-button-text-focus-border: 2px solid rgba(206, 210, 218, 1);
+
+$secondary-button-link-hover-color: rgba(20, 28, 36, 1);
+$secondary-button-text-color: rgba(52, 64, 81, 1);
+$secondary-button-disabled-text-color: rgba(99, 112, 131, 1);
+
+$tertiary-button-link-color: rgba(151, 161, 175, 1);
+$tertiary-button-link-hover-color: rgba(99, 112, 131, 1);

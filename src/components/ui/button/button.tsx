@@ -1,19 +1,7 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import styles from './button.module.scss';
 import clsx from 'clsx';
-
-type TButtonStyleProps = {
-  type: 'secondary' | 'primary' | 'tertiary';
-  variant: 'contained' | 'text' | 'link';
-};
-
-type TButtonUIProps = {
-  children: ReactNode;
-  htmlType: 'button' | 'submit' | 'reset' | undefined;
-  onClick?: () => void;
-  style: TButtonStyleProps;
-  disabled?: boolean;
-};
+import { TButtonUIProps } from './types';
 
 export const ButtonUI: FC<TButtonUIProps> = ({
   children,

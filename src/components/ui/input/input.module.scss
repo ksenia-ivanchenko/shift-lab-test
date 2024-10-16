@@ -1,1 +1,72 @@
+@import '../../../styles/index.scss';
 
+.input[type='number']::-webkit-inner-spin-button,
+.input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type='number'] {
+  appearance: textfield;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  font-family: $main-font-family;
+}
+
+.label {
+  font-size: $input-decor-font-size;
+  line-height: $input-decor-line-height;
+  color: $input-label-text-color;
+  // margin-block-end: 6px;
+}
+
+.input {
+  padding: 12px;
+  border: none;
+  outline: $input-border;
+  border-radius: $input-border-radius;
+  font-weight: $input-font-weight;
+  font-size: $input-placeholder-font-size;
+  line-height: $input-placeholder-line-height;
+
+  &::placeholder {
+    color: $input-placeholder-text-color;
+    font-size: $input-placeholder-font-size;
+    line-height: $input-placeholder-line-height;
+  }
+
+  &:hover:enabled:not(.invalid):not(:focus-visible) {
+    outline: $input-hover-border;
+  }
+
+  &:focus-visible {
+    outline: $input-focus-border;
+  }
+
+  &:disabled {
+    background-color: $input-disabled-bg;
+  }
+
+  &.invalid {
+    outline: $input-error-border;
+  }
+}
+
+.hint {
+  color: $input-hint-message-text-color;
+  font-size: $input-decor-font-size;
+  line-height: $input-decor-line-height;
+  margin-block-start: 3px;
+}
+
+.error {
+  color: $input-error-message-text-color;
+  font-size: $input-decor-font-size;
+  line-height: $input-decor-line-height;
+  height: 0;
+  // margin-block-start: 3px;
+}

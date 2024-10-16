@@ -1,13 +1,7 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { ButtonUI } from '../ui';
-type TAuthFormProps = {
-  onSubmit: () => void;
-  children: ReactNode;
-  buttonText: ReactNode;
-  title?: string;
-  description?: string;
-  valid: boolean;
-};
+import { TAuthFormProps } from './types';
+import styles from './auth-form.module.scss';
 
 export const AuthForm: FC<TAuthFormProps> = ({
   onSubmit,
@@ -29,11 +23,16 @@ export const AuthForm: FC<TAuthFormProps> = ({
   };
 
   return (
-    <div>
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <form noValidate onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
-        {children}
+    <form
+      noValidate
+      onSubmit={handleSubmit}
+      onKeyDown={handleKeyDown}
+      className={styles.form}
+    >
+      <h1 className={styles.title}>{title}</h1>
+      <p className={styles.description}>{description}</p>
+      {children}
+      <div className={styles.button}>
         <ButtonUI
           disabled={!valid}
           htmlType="submit"
@@ -41,7 +40,7 @@ export const AuthForm: FC<TAuthFormProps> = ({
         >
           {buttonText}
         </ButtonUI>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };

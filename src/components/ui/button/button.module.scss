@@ -1,1 +1,145 @@
+@import '../../../styles';
 
+.button {
+  font-family: $main-font-family;
+  padding-inline: $button-inline-padding;
+  padding-block: $button-block-padding;
+  border-radius: $button-border-radius;
+  border: none;
+  inline-size: 100%;
+  block-size: 100%;
+  line-height: 24px;
+  max-inline-size: 500px;
+  max-block-size: 80px;
+
+  &:hover:enabled {
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &.primary {
+    &.contained {
+      background-color: $primary-button-contained-bg;
+      font-weight: $contained-button-font-weigth;
+      color: $primary-button-contained-text-color;
+
+      &:hover:enabled {
+        background-color: $primary-button-contained-hover-bg;
+      }
+
+      &:focus-visible {
+        outline: $primary-button-contained-focus-border;
+      }
+
+      &:disabled {
+        background-color: $primary-button-contained-disabled-bg;
+      }
+    }
+
+    &.text {
+      background-color: $primary-button-text-bg;
+      font-weight: $text-button-font-weigth;
+      color: $primary-button-text-text-color;
+
+      &:hover:enabled {
+        background-color: $primary-button-text-hover-bg;
+      }
+
+      &:focus-visible {
+        outline: $primary-button-text-focus-border;
+      }
+
+      &:disabled {
+        color: $primary-button-text-disabled-text-color;
+        outline: $primary-button-text-disabled-border;
+      }
+    }
+
+    &.link {
+      background-color: $primary-button-link-bg;
+      color: $primary-button-link-color;
+      font-weight: $link-button-font-weigth;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+
+      &:hover:enabled {
+        color: $primary-button-link-hover-color;
+      }
+
+      &:focus-visible {
+        // TODO: сделать уменьшение подчеркивания в  фокусе
+      }
+
+      &:disabled {
+        color: $primary-button-link-disabled-color;
+      }
+    }
+  }
+
+  &.secondary {
+    background-color: $secondary-button-contained-bg;
+    color: $secondary-button-text-color;
+
+    &:disabled {
+      color: $secondary-button-disabled-text-color;
+    }
+
+    &.contained {
+      outline: $secondary-button-contained-border;
+      font-weight: $contained-button-font-weigth;
+
+      &:hover:enabled {
+        background-color: $secondary-button-contained-hover-bg;
+      }
+
+      &:focus-visible {
+        outline: $secondary-button-contained-focus-border;
+      }
+
+      &:disabled {
+        outline: $secondary-button-contained-disabled-border;
+      }
+    }
+
+    &.text {
+      font-weight: $text-button-font-weigth;
+
+      &:hover:enabled {
+        background-color: $secondary-button-text-hover-bg;
+      }
+
+      &:focus-visible {
+        outline: $secondary-button-text-focus-border;
+      }
+    }
+
+    &.link {
+      font-weight: $link-button-font-weigth;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+
+      &:hover:enabled {
+        color: $secondary-button-link-hover-color;
+      }
+
+      &:focus-visible {
+        // TODO: сделать уменьшение подчеркивания в  фокусе
+      }
+    }
+  }
+
+  &.tertiary {
+    color: $tertiary-button-link-color;
+    background-color: $secondary-button-contained-bg;
+    font-weight: $tertiary-link-button-font-weigth;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    &:hover:enabled {
+      color: $tertiary-button-link-hover-color;
+    }
+  }
+}

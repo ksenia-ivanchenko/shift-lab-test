@@ -1,9 +1,14 @@
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthForm } from '../../components';
-import { ButtonUI, InputUI } from '../../components/ui';
+import { ButtonUI, InputUI, Preloader } from '../../components/ui';
 import { validateOtp } from '../../utils/validate-otp';
 import { allowedKeys, isNumber } from '../../utils/validate-phone';
+import styles from './auth-otp.module.scss';
+import { useDispatch, useSelector } from '../../store';
+import { formatPhoneNumber } from '../../utils/format-phone-number';
+import { signIn } from '../../store/slices';
+import { createOtpApi } from '../../services/api';
 
 export const AuthOtpPage: FC = () => {
   const navigate = useNavigate();
@@ -11,6 +16,10 @@ export const AuthOtpPage: FC = () => {
   const [canRequest, setCanRequest] = useState(false);
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
+  const { user, requestError, authorized, loading } = useSelector(
+    (state) => state.user
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (seconds > 0) {
@@ -24,15 +33,21 @@ export const AuthOtpPage: FC = () => {
     }
   }, [seconds]);
 
-  const requestCode = () => {
-    // Логика запроса кода
+  useEffect(() => {
+    setError(requestError);
+    if (authorized) {
+      navigate('/home');
+    }
+  }, [requestError, authorized]);
 
+  const requestCode = () => {
+    createOtpApi({ phone: user.phone });
     setSeconds(120);
     setCanRequest(false);
   };
 
   const handleSubmit = () => {
-    navigate('/');
+    dispatch(signIn({ phone: user.phone, code: Number(otp) }));
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,41 +63,52 @@ export const AuthOtpPage: FC = () => {
   };
 
   return (
-    <>
+    <div className={styles.content}>
       <AuthForm
         onSubmit={handleSubmit}
-        buttonText={'Продолжить'}
+        buttonText={loading ? <Preloader /> : 'Войти'}
         title="Вход"
         description="Введите проверочный код для входа в личный кабинет"
         valid={!error && otp.length > 0}
       >
-        <InputUI placeholder="Телефон" value="89149031579" disabled />
+        <InputUI
+          placeholder="Телефон"
+          value={formatPhoneNumber(user.phone)}
+          disabled
+          id="phone"
+        />
         <InputUI
           placeholder="Проверочный код"
-          inputType="number"
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
           error={error}
+          id="otp"
         />
       </AuthForm>
-      <ButtonUI
-        htmlType="button"
-        style={{ type: 'tertiary', variant: 'link' }}
-        onClick={() => navigate('/auth/phone')}
-      >
-        Ввести другой номер телефона
-      </ButtonUI>
       {canRequest ? (
-        <ButtonUI
-          onClick={requestCode}
-          htmlType="button"
-          style={{ type: 'secondary', variant: 'text' }}
-        >
-          Запросить код ещё раз
-        </ButtonUI>
+        <div className={styles.again_button}>
+          <ButtonUI
+            onClick={requestCode}
+            htmlType="button"
+            style={{ type: 'secondary', variant: 'text' }}
+          >
+            Запросить код ещё раз
+          </ButtonUI>
+        </div>
       ) : (
-        <span>Запросить код повторно можно через {seconds} секунд</span>
+        <span className={styles.again}>
+          Запросить код повторно можно через {seconds} секунд
+        </span>
       )}
-    </>
+      <div className={styles.another_phone}>
+        <ButtonUI
+          htmlType="button"
+          style={{ type: 'tertiary', variant: 'link' }}
+          onClick={() => navigate('/auth/phone')}
+        >
+          Ввести другой номер телефона
+        </ButtonUI>
+      </div>
+    </div>
   );
 };

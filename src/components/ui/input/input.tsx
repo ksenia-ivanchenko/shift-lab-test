@@ -1,15 +1,7 @@
 import { FC } from 'react';
 import styles from './input.module.scss';
-
-type TInputUIProps = {
-  placeholder: string;
-  error?: string;
-  inputType?: string;
-  value?: string | number;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  disabled?: boolean;
-};
+import { TInputUIProps } from './types';
+import clsx from 'clsx';
 
 export const InputUI: FC<TInputUIProps> = ({
   placeholder,
@@ -19,10 +11,18 @@ export const InputUI: FC<TInputUIProps> = ({
   onChange,
   onKeyPress,
   disabled,
+  id,
+  label,
+  hintMesage,
 }) => (
-  <>
+  <div className={styles.container}>
+    <label htmlFor={id} className={styles.label}>
+      {label}
+    </label>
     <input
-      className={styles.input}
+      className={clsx(styles.input, {
+        [styles.invalid]: error,
+      })}
       placeholder={placeholder}
       type={inputType}
       value={value}
@@ -30,6 +30,16 @@ export const InputUI: FC<TInputUIProps> = ({
       onChange={onChange}
       onKeyPress={onKeyPress}
     />
-    {error && <span>{error}</span>}
-  </>
+    {hintMesage && !error && !value && (
+      <span className={styles.hint}>{hintMesage}</span>
+    )}
+
+    {/* {error && <span className={styles.error}>{error}</span>} */}
+    <span
+      className={styles.error}
+      style={{ visibility: error ? 'visible' : 'hidden' }}
+    >
+      {error}
+    </span>
+  </div>
 );

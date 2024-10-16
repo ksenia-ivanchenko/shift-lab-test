@@ -1,0 +1,25 @@
+@import '../../styles/index.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-family: $main-font-family;
+  max-width: 464px;
+  line-height: $main-line-height;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.description {
+  max-inline-size: 290px;
+}
+
+.button {
+  inline-size: 328px;
+  margin-block: 16px;
+}

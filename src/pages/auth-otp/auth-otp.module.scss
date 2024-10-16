@@ -1,0 +1,22 @@
+@import '../../styles/index.scss';
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 240px;
+  margin-top: 96px;
+}
+
+.again_button {
+  inline-size: 328px;
+}
+
+.again {
+  margin-block-start: 24px;
+  color: $tertiary-button-link-color;
+}
+
+.another_phone {
+//   margin-block-start: 24px;
+  inline-size: 328px;
+  font-size: 12px;
+}

@@ -1,3 +1,3 @@
 export * from './auth-phone';
 export * from './auth-otp';
-export * from './main';
+export * from './home';
