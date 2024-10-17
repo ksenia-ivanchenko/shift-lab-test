@@ -18,11 +18,11 @@ export const AuthPhonePage: FC = () => {
   const [error, setError] = useState('');
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.user);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus(); // TODO: чекнуть типизацию
+      inputRef.current.focus(); 
     }
   }, []);
 
@@ -31,7 +31,7 @@ export const AuthPhonePage: FC = () => {
     const phoneRequest = phone.replace(/[\+\s]/g, '').replace(/^7/, '8');
     dispatch(createOtp({ phone: phoneRequest })).then(() => {
       dispatch(setUser({ phone: phoneRequest }));
-      navigate('/auth/otp');
+      navigate('/otp');
     });
   };
 

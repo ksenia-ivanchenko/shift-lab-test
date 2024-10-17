@@ -25,19 +25,19 @@ function App() {
           }
         />
         <Route
-          path="/auth/phone"
+          path="/auth"
           element={
-            // <ProtectedRoute type="unauth">
-            <AuthPhonePage />
-            // </ProtectedRoute>
+            <ProtectedRoute type="unauth">
+              <AuthPhonePage />
+            </ProtectedRoute>
           }
         />
         <Route
-          path="/auth/otp"
+          path="/otp"
           element={
-            // <ProtectedRoute type="unauth">
-            <AuthOtpPage />
-            // </ProtectedRoute>
+            <ProtectedRoute type="unauth">
+              <AuthOtpPage />
+            </ProtectedRoute>
           }
         />
       </Routes>

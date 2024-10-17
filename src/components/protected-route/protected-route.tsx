@@ -1,6 +1,5 @@
 import { Navigate } from 'react-router-dom';
 import { useSelector } from '../../store';
-import { Preloader } from '../ui/preloader';
 
 type TProtectedRouteType = 'auth' | 'unauth';
 
@@ -16,15 +15,11 @@ export const ProtectedRoute = ({ children, type }: ProtectedRouteProps) => {
   // const location = useLocation();
   // const from = location.state?.from || '/';
 
-  if (!isAuthChecked || loading) {
-    return <Preloader />;
+  if (type === 'auth' && !authorized && isAuthChecked && !loading) {
+    return <Navigate to="/auth" />;
   }
 
-  if (type === 'auth' && !authorized) {
-    return <Navigate to="/auth/phone" />;
-  }
-
-  if (type === 'unauth' && authorized) {
+  if (type === 'unauth' && authorized && isAuthChecked && !loading) {
     return <Navigate to="/home" />;
   }
 

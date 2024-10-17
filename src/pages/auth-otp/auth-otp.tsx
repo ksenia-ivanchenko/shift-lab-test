@@ -20,11 +20,11 @@ export const AuthOtpPage: FC = () => {
     (state) => state.user
   );
   const dispatch = useDispatch();
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus(); // TODO: чекнуть типизацию
+      inputRef.current.focus();
     }
   }, []);
 
@@ -114,7 +114,7 @@ export const AuthOtpPage: FC = () => {
         <ButtonUI
           htmlType="button"
           style={{ type: 'tertiary', variant: 'link' }}
-          onClick={() => navigate('/auth/phone')}
+          onClick={() => navigate('/auth')}
         >
           Ввести другой номер телефона
         </ButtonUI>
