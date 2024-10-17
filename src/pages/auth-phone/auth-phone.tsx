@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { AuthForm } from '../../components';
 import { useNavigate } from 'react-router-dom';
 import { InputUI, Preloader } from '../../components/ui';
@@ -18,6 +18,13 @@ export const AuthPhonePage: FC = () => {
   const [error, setError] = useState('');
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.user);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus(); // TODO: чекнуть типизацию
+    }
+  }, []);
 
   const handleSubmit = () => {
     // eslint-disable-next-line no-useless-escape
@@ -61,6 +68,7 @@ export const AuthPhonePage: FC = () => {
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
           id="phone"
+          ref={inputRef}
         />
       </AuthForm>
     </main>

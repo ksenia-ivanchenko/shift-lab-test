@@ -52,7 +52,7 @@ export const createOtp = createAsyncThunk(
 type TUsersState = {
   user: TUser;
   loading: boolean;
-  requestError: string;
+  requestError?: string;
   isAuthChecked: boolean;
   authorized: boolean;
 };

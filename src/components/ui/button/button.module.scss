@@ -11,6 +11,7 @@
   line-height: 24px;
   max-inline-size: 500px;
   max-block-size: 80px;
+  transition: all linear 150ms;
 
   &:hover:enabled {
     cursor: pointer;

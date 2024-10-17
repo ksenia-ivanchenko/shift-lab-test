@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type TInputUIProps = {
   placeholder: string;
   error?: string;
@@ -9,4 +11,5 @@ export type TInputUIProps = {
   id?: string;
   label?: string;
   hintMesage?: string;
+  ref?: ReactNode;
 };

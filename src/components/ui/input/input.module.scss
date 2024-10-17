@@ -25,6 +25,7 @@
 }
 
 .input {
+  transition: all linear 150ms;
   padding: 12px;
   border: none;
   outline: $input-border;

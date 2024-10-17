@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthForm } from '../../components';
 import { ButtonUI, InputUI, Preloader } from '../../components/ui';
@@ -20,6 +20,13 @@ export const AuthOtpPage: FC = () => {
     (state) => state.user
   );
   const dispatch = useDispatch();
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus(); // TODO: чекнуть типизацию
+    }
+  }, []);
 
   useEffect(() => {
     if (seconds > 0) {
@@ -34,7 +41,9 @@ export const AuthOtpPage: FC = () => {
   }, [seconds]);
 
   useEffect(() => {
-    setError(requestError);
+    if (requestError) {
+      setError(requestError);
+    }
     if (authorized) {
       navigate('/home');
     }
@@ -83,6 +92,7 @@ export const AuthOtpPage: FC = () => {
           onKeyPress={handleKeyPress}
           error={error}
           id="otp"
+          ref={inputRef}
         />
       </AuthForm>
       {canRequest ? (

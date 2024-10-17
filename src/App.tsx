@@ -3,8 +3,7 @@ import { AuthOtpPage, AuthPhonePage, HomePage } from './pages';
 import { useDispatch } from './store';
 import { useEffect } from 'react';
 import { checkUserAuth } from './store/slices';
-// import { ProtectedRoute } from './components';
-// import { useEffect } from 'react';
+import { ProtectedRoute } from './components';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,9 +19,9 @@ function App() {
         <Route
           path="/home"
           element={
-            // <ProtectedRoute type="auth">
-            <HomePage />
-            // </ProtectedRoute>
+            <ProtectedRoute type="auth">
+              <HomePage />
+            </ProtectedRoute>
           }
         />
         <Route
