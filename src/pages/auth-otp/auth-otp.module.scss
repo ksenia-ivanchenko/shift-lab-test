@@ -2,7 +2,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding-inline: 240px;
+  padding-inline: clamp(0.625rem, -3.4821rem + 20.5357vw, 15rem);
   margin-top: 96px;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .another_phone {
-//   margin-block-start: 24px;
+  //   margin-block-start: 24px;
   inline-size: 328px;
   font-size: 12px;
 }

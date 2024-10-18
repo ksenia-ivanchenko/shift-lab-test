@@ -42,6 +42,7 @@ export const userSlice = createSlice({
         city: '',
       };
       state.authorized = false;
+      state.requestError = '';
     },
     authChecked: (state) => {
       state.isAuthChecked = true;

@@ -7,7 +7,7 @@ import { allowedKeys, isNumber } from '../../utils/validate-phone';
 import styles from './auth-otp.module.scss';
 import { useDispatch, useSelector } from '../../store';
 import { formatPhoneNumber } from '../../utils/format-phone-number';
-import { signIn } from '../../store/slices';
+import { resetUser, signIn } from '../../store/slices';
 import { createOtpApi } from '../../services/api';
 
 export const AuthOtpPage: FC = () => {
@@ -114,7 +114,10 @@ export const AuthOtpPage: FC = () => {
         <ButtonUI
           htmlType="button"
           style={{ type: 'tertiary', variant: 'link' }}
-          onClick={() => navigate('/auth')}
+          onClick={() => {
+            navigate('/auth');
+            dispatch(resetUser());
+          }}
         >
           Ввести другой номер телефона
         </ButtonUI>
