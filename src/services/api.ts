@@ -1,43 +1,13 @@
 import { getCookie, setCookie } from './cookie';
+import {
+  TCreateOtpData,
+  TCreateOtpResponse,
+  TGetUserSessionResponse,
+  TLoginData,
+  TSignInResponse,
+} from './types';
 
 const URL = import.meta.env.VITE_API_URL;
-
-export type TLoginData = {
-  phone: string;
-  code: number;
-};
-
-export type TUser = {
-  phone: string;
-  firstname?: string;
-  middlename?: string;
-  lastname?: string;
-  email?: string;
-  city?: string;
-};
-
-export type TSignInResponse = {
-  success: boolean;
-  user: TUser;
-  token: string;
-  reason?: string;
-};
-
-export type TCreateOtpData = {
-  phone: string;
-};
-
-export type TCreateOtpResponse = {
-  success: boolean;
-  reason: boolean;
-  retryDelay: number;
-};
-
-export type TGetUserSessionResponse = {
-  success: boolean;
-  user: TUser;
-  reason?: string;
-};
 
 const checkResponse = <T>(res: Response): Promise<T> =>
   res.ok
@@ -46,28 +16,6 @@ const checkResponse = <T>(res: Response): Promise<T> =>
         .json()
         .then((res) => res.reason)
         .then((data) => Promise.reject({ message: data }));
-// const checkResponse = <T>(res: Response): Promise<T> => {
-//   console.log('Ответ от сервера:', res);
-//   if (res.ok) {
-//     return res.json();
-//   } else {
-//     return res.text().then((text) => {
-//       console.log('Текст ответа:', text); // Логируйте текст ответа
-//       try {
-//         const json = JSON.parse(text);
-//         return Promise.reject({
-//           message: json.error || 'Ошибка сервера',
-//           ...json,
-//         });
-//       } catch {
-//         return Promise.reject({
-//           message: 'Не удалось разобрать ответ от сервера',
-//           raw: text,
-//         });
-//       }
-//     });
-//   }
-// };
 
 export const signInApi = (data: TLoginData) =>
   fetch(`${URL}/users/signin`, {

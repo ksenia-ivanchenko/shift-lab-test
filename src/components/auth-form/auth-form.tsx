@@ -13,7 +13,9 @@ export const AuthForm: FC<TAuthFormProps> = ({
 }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit();
+    if (valid) {
+      onSubmit();
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -28,6 +30,7 @@ export const AuthForm: FC<TAuthFormProps> = ({
       onSubmit={handleSubmit}
       onKeyDown={handleKeyDown}
       className={styles.form}
+      data-testid="auth-form"
     >
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.description}>{description}</p>

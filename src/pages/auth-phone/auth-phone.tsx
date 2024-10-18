@@ -9,30 +9,35 @@ import {
 } from '../../utils/validate-phone';
 import { formatPhoneNumber } from '../../utils/format-phone-number';
 import styles from './auth-phone.module.scss';
-import { useDispatch, useSelector } from '../../store';
-import { createOtp, setUser } from '../../store/slices';
+import { useDispatch } from '../../store';
+import { createOtpApi } from '../../services/api';
+import { setUser } from '../../store/slices';
 
 export const AuthPhonePage: FC = () => {
   const navigate = useNavigate();
   const [phone, setPhone] = useState('');
   const [error, setError] = useState('');
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.user);
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus(); 
+      inputRef.current.focus();
     }
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // eslint-disable-next-line no-useless-escape
     const phoneRequest = phone.replace(/[\+\s]/g, '').replace(/^7/, '8');
-    dispatch(createOtp({ phone: phoneRequest })).then(() => {
+    setLoading(true);
+    try {
+      await createOtpApi({ phone: phoneRequest });
+    } finally {
       dispatch(setUser({ phone: phoneRequest }));
+      setLoading(false);
       navigate('/otp');
-    });
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -2,8 +2,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { AuthOtpPage, AuthPhonePage, HomePage } from './pages';
 import { useDispatch } from './store';
 import { useEffect } from 'react';
-import { checkUserAuth } from './store/slices';
 import { ProtectedRoute } from './components';
+import { checkUserAuth } from './store/slices';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to="/auth/phone" replace />} />
+        <Route path="/" element={<Navigate to="/auth" replace />} />
         <Route
           path="/home"
           element={

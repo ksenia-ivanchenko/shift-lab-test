@@ -19,8 +19,8 @@ export const ButtonUI: FC<TButtonUIProps> = ({
       [styles.text]: style.variant === 'text',
       [styles.link]: style.variant === 'link',
     })}
-    type={htmlType}
     onClick={onClick}
+    type={htmlType}
     disabled={disabled}
   >
     {children}

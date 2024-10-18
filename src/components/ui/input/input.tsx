@@ -34,12 +34,12 @@ export const InputUI = React.forwardRef<HTMLInputElement, TInputUIProps>(
         onChange={onChange}
         onKeyPress={onKeyPress}
         ref={ref}
+        id={id}
       />
       {hintMesage && !error && !value && (
         <span className={styles.hint}>{hintMesage}</span>
       )}
 
-      {/* {error && <span className={styles.error}>{error}</span>} */}
       <span
         className={styles.error}
         style={{ visibility: error ? 'visible' : 'hidden' }}

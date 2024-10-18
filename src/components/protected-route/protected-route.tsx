@@ -1,12 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { useSelector } from '../../store';
-
-type TProtectedRouteType = 'auth' | 'unauth';
-
-type ProtectedRouteProps = {
-  children: React.ReactElement;
-  type: TProtectedRouteType;
-};
+import { ProtectedRouteProps } from './types';
 
 export const ProtectedRoute = ({ children, type }: ProtectedRouteProps) => {
   const { isAuthChecked, loading, authorized } = useSelector(
